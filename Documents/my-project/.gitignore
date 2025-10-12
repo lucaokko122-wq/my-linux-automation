@@ -1,0 +1,24 @@
+# Time files 
+*~
+.*.swp
+.DS_Store
+Thumbs.db
+# logs
+*.log
+logs/
+# Secrets
+*.key
+*.pem
+id_rsa
+*.env
+secrets.txt
+config.yml
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+# Ansible
+*.retry
+# Systems
+.idea/
+.vscode/
