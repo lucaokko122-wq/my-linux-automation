@@ -1,0 +1,20 @@
+# Private key and certificate
+*.key
+*.pfx
+*.pem
+*.crt
+*.csr
+*.srl
+
+#Admin Files
+*-admin*
+luka-admin*
+
+# Systems files
+.sudo_as_admin_successful
+.viminfo
+
+#SSH key
+.ssh/id_*
+.ssh/*.pub
+
