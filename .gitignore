@@ -1,0 +1,31 @@
+#SSL keys and sensetive data
+*.key
+*.pfx
+*.pem
+*.srl
+
+#SSH private keys 
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+
+#System files
+.DS_Store
+Thumbs.db
+
+#Backup files
+*.bak
+*.backup
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+._*
+.Spotlight-V100
+.Trashes
+
