@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Private key and certificate
 *.key
 *.pfx
@@ -17,4 +18,36 @@ luka-admin*
 #SSH key
 .ssh/id_*
 .ssh/*.pub
+=======
+#SSL keys and sensetive data
+*.key
+*.pfx
+*.pem
+*.srl
+
+#SSH private keys 
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+
+#System files
+.DS_Store
+Thumbs.db
+
+#Backup files
+*.bak
+*.backup
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+._*
+.Spotlight-V100
+.Trashes
+>>>>>>> b599481fa69aae330799f12eb5c84f0966791bce
 
