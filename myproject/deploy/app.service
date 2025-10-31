@@ -1,0 +1,11 @@
+[Unit]
+Description=My app
+After=network.target
+[Service]
+ExecStart=/usr/bin/npm start
+WorkingDirectory=/var/www/myapp
+User=www-data
+Group=www-data
+Restart=always
+[Install]
+WantedBy=multi-user.target
