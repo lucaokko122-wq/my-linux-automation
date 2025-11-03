@@ -51,3 +51,14 @@ Thumbs.db
 .Trashes
 >>>>>>> b599481fa69aae330799f12eb5c84f0966791bce
 
+
+# System files
+.bash_history
+.sudo_as_admin_successful
+.viminfo
+.lesshst
+.cache/
+.npm/
+.nvm/
+.wim/
+Documents/
