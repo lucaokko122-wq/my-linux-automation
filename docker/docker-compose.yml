@@ -1,0 +1,86 @@
+version: '3.8'
+
+services:
+  # Nginx веб-сервер
+  nginx:
+    build: 
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: nginx-web
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./configs/nginx:/etc/nginx/conf.d
+      - ./logs/nginx:/var/log/nginx
+    networks:
+      - frontend
+    restart: unless-stopped
+
+  # Python приложение
+  app:
+    image: python:3.9
+    container_name: python-app
+    working_dir: /app
+    volumes:
+      - ./app:/app
+    command: python -m http.server 8000
+    networks:
+      - frontend
+      - backend
+    restart: unless-stopped
+
+  # База данных PostgreSQL
+  database:
+    image: postgres:13
+    container_name: postgres-db
+    environment:
+      POSTGRES_DB: myapp
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-changeme123}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./backups/db:/backups
+    networks:
+      - backend
+    restart: unless-stopped
+
+  # Мониторинг
+  monitoring:
+    image: prom/node-exporter
+    container_name: node-exporter
+    ports:
+      - "9100:9100"
+    networks:
+      - monitoring
+    restart: unless-stopped
+
+  # Grafana дашборды
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin123}
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      - monitoring
+    restart: unless-stopped
+
+# Сети
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge  
+  monitoring:
+    driver: bridge
+
+# Volumes
+volumes:
+  db_data:
+    driver: local
+  grafana_data:
+    driver: local
