@@ -1,45 +1,23 @@
-# Руководство Администратора
+# Руководство админа
 
-## 🎯 Быстрый старт
+Скачай проект: git clone https://github.com/lucaokko122-wq/my-linux-automation.git
+Заходи в папку: cd my-linux-automation
+Настрой серверы в файле infrastructure/servers.list - просто напиши IP адреса своих серверов
+Запусти главный скрипт: ./scripts/master-deploy.sh all
+Жди пока все установится
+Проверь в браузере: http://твой-ip-сервера
 
-### Предварительные требования
-- Linux сервер (Ubuntu 20.04+/CentOS 7+)
-- Доступ по SSH с правами sudo
-- Python 3.6+ (для Ansible)
-- Docker (опционально)
+Ежедневно запускай:
+./scripts/monitoring/health-check.sh - проверка состояния
+./scripts/backups/daily-backup.sh - бэкапы
+./scripts/security/daily-scan.sh - проверка безопасности
 
-### 1. Клонирование проекта
-```bash
-git clone https://github.com/lucaokko122-wq/my-linux-automation.git
-cd my-linux-automation
+Если сломалось:
+Сайт не грузится - ./scripts/emergency/restart-nginx.sh
+Сервер не отвечает - ./scripts/emergency/reboot-server.sh
+Все плохо - ./scripts/backups/disaster-recovery.sh
 
-Запуск автоматизации
-```bash
-# Полное развертывание
-./scripts/master-deploy.sh all
-
-# Или поэтапно
-./scripts/master-deploy.sh base      # Базовая настройка
-./scripts/master-deploy.sh web       # Веб-серверы
-./scripts/master-deploy.sh security  # Безопасность
-./scripts/master-deploy.sh monitoring # Мониторинг
-
-# Ежедневные операци
-Мониторинг состояния
-```bash
-./scripts/monitoring/health-check.sh
-./scripts/monitoring/metrics-collector.sh
-
-Резервное копирование
-```bash
-# Ежедневные бэкапы
-./scripts/backups/daily-backup.sh
-
-# Восстановление
-./scripts/backups/restore-backup.sh [backup-file]
-
-Обновления безопасности
-```bash
-./scripts/security/auto-update.sh
-./scripts/security/vulnerability-scan.sh
-
+Логи смотри тут:
+/var/log/automation/deploy.log - установка
+/var/log/automation/backup.log - бэкапы
+/var/log/nginx/access.log - сайт
