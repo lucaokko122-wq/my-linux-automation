@@ -1,6 +1,6 @@
 # Руководство админа
 
-Скачай проект: git clone https://github.com/lucaokko122-wq/my-linux-automation.git
+Скачай проект: git clone https://github.com/lucaokko122-wq/my-linux-automation.git 
 Заходи в папку: cd my-linux-automation
 Настрой серверы в файле infrastructure/servers.list - просто напиши IP адреса своих серверов
 Запусти главный скрипт: ./scripts/master-deploy.sh all
