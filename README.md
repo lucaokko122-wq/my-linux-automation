@@ -15,7 +15,7 @@
 git clone https://github.com/lucaokko122-wq/my-linux-automation
 cd my-linux-automation
 ./scripts/master-deploy.sh all
-
+```
 Структура репозитория
 
 scripts/          - Скрипты автоматизации
@@ -30,3 +30,41 @@ Ubuntu 20.04+ / Debian 11+
 2GB+ RAM, 20GB+ HDD
 
 Root доступ
+
+
+##№ **2. docs/infrastructure-requirements.md**
+```markdown
+# Требования к инфраструктуре
+
+## Серверные требования
+- **Минимально**: 2 vCPU, 4GB RAM, 50GB HDD
+- **Рекомендуется**: 4 vCPU, 8GB RAM, 100GB HDD
+
+## Сетевые требования
+- Статический IP адрес
+- Открытые порты: 80, 443, 22, 1194 (VPN)
+- DNS запись для домена (опционально)
+
+## Предварительные пакеты
+```bash
+# Обязательные
+sudo apt update
+sudo apt install -y git curl wget
+
+# Для VPN
+sudo apt install -y openvpn easy-rsa
+
+# Для мониторинга
+sudo apt install -y prometheus grafana
+
+# Для бэкапов
+sudo apt install -y rsync tar gzip
+
+### **3. docs/deployment-guide.md**
+```markdown
+# Руководство по развертыванию
+
+## 1. Подготовка
+```bash
+git clone https://github.com/ваш-репозиторий
+cd my-linux-automation
