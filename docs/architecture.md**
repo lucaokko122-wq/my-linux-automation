@@ -1,0 +1,19 @@
+### **4. docs/architecture.md**
+```markdown
+# Архитектура системы
+
+## Схема серверов
+[VPN Server] ←→ [Monitoring] ←→ [Backup Server]
+↓ ↓ ↓
+Clients Prometheus Storage
+| | |
+Internet Grafana Cloud/S3
+## Взаимодействие компонентов
+- **VPN** ↔ **Monitoring**: метрики подключений
+- **Monitoring** ↔ **Backup**: статус бэкапов  
+- **All** → **Central Logs**: сбор логов
+
+## Потоки данных
+1. Клиенты → VPN → Интернет
+2. Сервисы → Prometheus → Grafana
+3. Данные → Backup → Хранилище
