@@ -1,1 +1,17 @@
+[ req ]
+default_bits        = 2048
+default_keyfile     = ca-key.pem
+distinguished_name  = req_distinguished_name
+x509_extensions     = v3_ca
 
+[ req_distinguished_name ]
+countryName         = {{COUNTRY}}
+stateOrProvinceName = {{STATE}}
+localityName        = {{CITY}}
+organizationName    = {{ORGANIZATION}}
+commonName          = {{COMMON_NAME}}
+
+[ v3_ca ]
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid:always,issuer:always
+basicConstraints       = CA:true
