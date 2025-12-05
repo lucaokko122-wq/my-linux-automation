@@ -1,0 +1,11 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'node'
+    static_configs:
+      - targets: ['{{MONITORING_SERVER_IP}}:9100']
+  
+  - job_name: 'vpn'
+    static_configs:
+      - targets: ['{{VPN_SERVER_IP}}:9180']
