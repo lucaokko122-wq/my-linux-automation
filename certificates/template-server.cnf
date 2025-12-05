@@ -1,0 +1,11 @@
+[ req ]
+default_bits       = 2048
+default_keyfile    = server-key.pem
+distinguished_name = req_distinguished_name
+
+[ req_distinguished_name ]
+countryName         = {{COUNTRY}}
+stateOrProvinceName = {{STATE}}
+localityName        = {{CITY}}
+organizationName    = {{ORGANIZATION}}
+commonName          = {{SERVER_NAME}}
